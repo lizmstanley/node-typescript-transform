@@ -1,7 +1,13 @@
 {
-  "name": "enthena",
+  "name": "node-typescript-transform",
   "version": "1.0.0",
-  "description": "Coding challenge for Ethena",
+  "description": "Example of using transform streams with Node.js and typecript",
+  "author": "Liz Stanley <lizmstanley@gmail.com>",
+  "license": "UNLICENSED",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:lizmstanley/node-typescript-transform.git"
+  },
   "scripts": {
     "start": "ts-node ./src/main $IN_FILE $OUT_FILE",
     "test": "npm run build && mocha -t 20000 --require ts-node/register $(find ./test -name '*.ts')",
