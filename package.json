@@ -1,7 +1,7 @@
 {
   "name": "node-typescript-transform",
   "version": "1.0.0",
-  "description": "Example of using transform streams with Node.js and typecript",
+  "description": "Example of using transform streams with Node.js and typescript",
   "author": "Liz Stanley <lizmstanley@gmail.com>",
   "license": "UNLICENSED",
   "repository": {
