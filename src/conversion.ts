@@ -1,3 +1,7 @@
+/**
+ * Creating a couple of enums to enforce specific cardinal directional values. That way we don't have to do any validation.
+ * Also we'll leverage the numeric values here for determining positive/negative when converting to decimal cooordinates.
+ */
 export enum LatitudeCardinalDir {
     N = 1,
     S = -1,
@@ -8,7 +12,10 @@ export enum LongitudeCardinalDir {
     W = -1,
 }
 
-export interface CooordinateDegrees<D> {
+/**
+ * The only difference between latitude and longitude is the type of the "dir" property. We can use generics for that.
+ */
+export class CooordinateDegrees<D> {
     degrees: number;
     minutes: number;
     seconds: number;
