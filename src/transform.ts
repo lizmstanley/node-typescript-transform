@@ -17,7 +17,7 @@ export class LatLonTransformer extends Transform {
                 callback(null, {
                     city: row.City,
                     state: row.State,
-                    coordinates: toGeoLoc({
+                    geometry: toGeoLoc({
                         latitude: {
                             degrees: parseInt(row.LatD),
                             minutes: parseInt(row.LatM),

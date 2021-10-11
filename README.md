@@ -17,10 +17,10 @@ LatD,LatM,LatS,NS,LonD,LonM,LonS,EW,City,State
 Into this format, and write the result as ndjson to a new file:
 
 ```json
-{"city":"Youngstown","state":"OH","coordinates":{"type":"Point","coordinates":[-80.65,41.0997]}}
-{"city":"Yankton","state":"SD","coordinates":{"type":"Point","coordinates":[-97.3897,42.88]}}
-{"city":"Yakima","state":"WA","coordinates":{"type":"Point","coordinates":[-120.51,46.5997]}}
-{"city":"Worcester","state":"MA","coordinates":{"type":"Point","coordinates":[-71.8,42.27]}}
+{"city":"Youngstown","state":"OH","geometry":{"type":"Point","coordinates":[-80.65,41.0997]}}
+{"city":"Yankton","state":"SD","geometry":{"type":"Point","coordinates":[-97.3897,42.88]}}
+{"city":"Yakima","state":"WA","geometry":{"type":"Point","coordinates":[-120.51,46.5997]}}
+{"city":"Worcester","state":"MA","geometry":{"type":"Point","coordinates":[-71.8,42.27]}}
 ```
 
 Note that by leveraging transform streams, Typescript enums, etc. I'm able to do this without using any if/else statements!
