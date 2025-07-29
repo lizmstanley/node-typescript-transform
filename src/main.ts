@@ -3,18 +3,18 @@ import * as fs from 'fs';
 
 const stream = require('stream');
 const pipeline = util.promisify(stream.pipeline);
-const csv = require('csv-parser');
+import csv from 'csv-parser';
 import ReadableStream = NodeJS.ReadableStream;
 import WritableStream = NodeJS.WritableStream;
 import { LatLonTransformer, NdjsonTransformer } from './transform';
 
 /**
- * This is an immediately-invoked function expression. In this case it's taking a couple
+ * This is an immediately invoked function expression. In this case, it's taking a couple
  * of parameters (which are passed in from the npm start script in package.json.)
  */
-(async (inFile, outFile) => {
+(async (inFile: string, outFile: string) => {
     await main(inFile, outFile);
-})(process.env.IN_FILE, process.env.OUT_FILE);
+})(process.env.IN_FILE as string, process.env.OUT_FILE as string);
 
 /**
  * Assembles the pipeline for all the steps we need. Async because we're reading from/writing to the filesystem.

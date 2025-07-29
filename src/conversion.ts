@@ -1,6 +1,6 @@
 /**
- * Creating a couple of enums to enforce specific cardinal directional values. That way we don't have to do any validation.
- * Also we'll leverage the numeric values here for determining positive/negative when converting to decimal cooordinates.
+ * Creating a couple of enums to enforce specific cardinal directional values. That way, we don't have to do any validation.
+ * We'll also leverage the numeric values here for determining positive/negative when converting to decimal coordinates.
  */
 export enum LatitudeCardinalDir {
     N = 1,
@@ -15,7 +15,7 @@ export enum LongitudeCardinalDir {
 /**
  * The only difference between latitude and longitude is the type of the "dir" property. We can use generics for that.
  */
-export class CooordinateDegrees<D> {
+export interface CooordinateDegrees<D> {
     degrees: number;
     minutes: number;
     seconds: number;
@@ -31,10 +31,13 @@ export class GeoLoc {
     }
 }
 
-export function toGeoLoc({ latitude, longitude }): GeoLoc {
-    return new GeoLoc([convertDMS(longitude), convertDMS(latitude)]);
+export function toGeoLoc({latitude, longitude}: {
+    latitude: CooordinateDegrees<LatitudeCardinalDir>,
+    longitude: CooordinateDegrees<LongitudeCardinalDir>
+}): GeoLoc {
+    return new GeoLoc([convertDMS<LongitudeCardinalDir>(longitude), convertDMS<LatitudeCardinalDir>(latitude)]);
 }
 
-function convertDMS({ dir, degrees, minutes, seconds }): number {
-    return parseFloat((dir * (degrees + minutes / 60 + seconds / 3600)).toFixed(4));
+function convertDMS<D>({dir, degrees, minutes, seconds}: CooordinateDegrees<D>): number {
+    return parseFloat((dir as number * (degrees + minutes / 60 + seconds / 3600)).toFixed(4));
 }
