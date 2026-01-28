@@ -1,11 +1,7 @@
-import * as util from 'util';
-import * as fs from 'fs';
+import {pipeline} from 'node:stream/promises';
+import * as fs from "node:fs";
 
-const stream = require('stream');
-const pipeline = util.promisify(stream.pipeline);
 import csv from 'csv-parser';
-import ReadableStream = NodeJS.ReadableStream;
-import WritableStream = NodeJS.WritableStream;
 import { LatLonTransformer, NdjsonTransformer } from './transform';
 
 /**
@@ -22,8 +18,8 @@ import { LatLonTransformer, NdjsonTransformer } from './transform';
 async function main(inFile: string, outFile: string) {
     console.log(`Reading from ${inFile}`);
     console.log(`Writing to ${outFile}`);
-    const readable: ReadableStream = fs.createReadStream(inFile);
-    const writeable: WritableStream = fs.createWriteStream(outFile);
+    const readStream: fs.ReadStream = fs.createReadStream(inFile);
+    const writeStream: fs.WriteStream = fs.createWriteStream(outFile);
 
-    await pipeline(readable, csv(), new LatLonTransformer(), new NdjsonTransformer(), writeable);
+    await pipeline(readStream, csv(), new LatLonTransformer(), new NdjsonTransformer(), writeStream);
 }

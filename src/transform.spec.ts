@@ -1,10 +1,8 @@
-import * as util from 'util';
-import {Transform} from 'stream';
+import {Transform} from 'node:stream';
 import {LatLonTransformer} from './transform';
 import {GeoLoc} from './conversion';
-
-import stream = require('stream');
-const pipeline = util.promisify(stream.pipeline);
+import {pipeline} from 'node:stream/promises';
+import stream from 'node:stream';
 
 /**
  * The LatLonTransformer only knows about incoming json objects, not whether the data came from a file, etc. This

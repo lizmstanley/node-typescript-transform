@@ -16,12 +16,14 @@
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true,
     "skipLibCheck": true,
-    "forceConsistentCasingInFileNames": true
+    "forceConsistentCasingInFileNames": true,
+    "types": ["node", "vitest/globals"]
   },
   "exclude": [
     "node_modules"
   ],
   "include": [
     "src/**/*.ts",
+    "vite.config.ts",
   ]
 }

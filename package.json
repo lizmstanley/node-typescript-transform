@@ -11,25 +11,25 @@
   "scripts": {
     "clean": "rimraf ./dist",
     "build": "npm run clean && tsc --build",
-    "start": "ts-node ./src/main $IN_FILE $OUT_FILE",
-    "jest": "cross-env NODE_ENV=test jest",
-    "test": "cross-env NODE_ENV=test jest --forceExit"
+    "start": "tsx ./src/main $IN_FILE $OUT_FILE",
+    "test": "cross-env NODE_ENV=test vitest run"
   },
   "dependencies": {
     "csv-parser": "^3.2.0",
-    "dotenv": "^17.2.1"
+    "dotenv": "^17.2.3"
   },
   "devDependencies": {
     "@types/csv-parse": "^1.2.2",
-    "@types/jest": "^30.0.0",
+    "@types/node": "^25.0.3",
     "cross-env": "^10.0.0",
     "eslint": "^9.32.0",
-    "jest": "^30.0.5",
-    "prettier": "^3.6.2",
+    "prettier": "^3.8.1",
     "reflect-metadata": "^0.2.2",
-    "rimraf": "^6.0.1",
-    "ts-jest": "^29.4.0",
-    "ts-node": "^10.9.2",
-    "typescript": "^5.8.3"
+    "rimraf": "^6.1.2",
+    "tsx": "^4.21.0",
+    "typescript": "^5.9.3",
+    "vite": "^7.3.0",
+    "vitest": "^4.0.10",
+    "vite-tsconfig-paths": "6.0.5"
   }
 }
